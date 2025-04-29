@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-windows;net7.0-windows;net8.0-windows;net9.0-windows;</TargetFrameworks>
 		<Description>WPF、WinForms、Blazor 混合应用中的标题栏工具集，实现窗口拖动、关闭等。A title bar toolkit for WPF, WinForms, and Blazor hybrid apps. Enables window dragging, closing, and more.</Description>
@@ -8,10 +7,10 @@
 		<PackageProjectUrl>https://github.com/JiuLing-zhang/JiuLing.TitleBarKit</PackageProjectUrl>
 		<PackageIcon>nuget_icon.png</PackageIcon>
 		<PackageIconUrl />
-		<Version>1.7.5</Version>
+		<Version>1.0.0</Version>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<Copyright>Copyright (c) 2021 九零</Copyright>
+		<Copyright>Copyright (c) 2025 九零</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<ImplicitUsings>enable</ImplicitUsings>
