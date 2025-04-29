@@ -1,0 +1,39 @@
+﻿<Window x:Class="JiuLing.TitleBarKit.Wpf.Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JiuLing.TitleBarKit.Wpf.Test"
+        xmlns:blazor="clr-namespace:Microsoft.AspNetCore.Components.WebView.Wpf;assembly=Microsoft.AspNetCore.Components.WebView.Wpf"
+        mc:Ignorable="d"
+        Title="WPF 原生标题栏"
+        WindowStartupLocation="CenterScreen"
+        Height="450" 
+        Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#333333" MouseDown="TitleBar_MouseDown" Cursor="SizeAll">
+            <DockPanel LastChildFill="True" Margin="5,0">
+                <TextBlock Text="WPF 原生组件" Foreground="White" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="🗕" Click="Minimize_Click" Width="40" Background="Transparent"/>
+                    <Button Content="🗖" Click="Maximize_Click" Width="40" Background="Transparent"/>
+                    <Button Content="✕" Click="Close_Click" Width="40" Background="Transparent"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <blazor:BlazorWebView Grid.Row="1"
+                              HostPage="wwwroot\index.html"
+                              Services="{DynamicResource services}">
+            <blazor:BlazorWebView.RootComponents>
+                <blazor:RootComponent Selector="#app" ComponentType="{x:Type local:Test}" />
+            </blazor:BlazorWebView.RootComponents>
+        </blazor:BlazorWebView>
+    </Grid>
+
+</Window>
