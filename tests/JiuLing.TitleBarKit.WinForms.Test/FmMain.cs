@@ -7,21 +7,21 @@ namespace JiuLing.TitleBarKit.WinForms.Test
 {
     public partial class FmMain : Form
     {
-        private readonly TitleBarService _windowControl;
+        private readonly TitleBarService _titleBarService;
         public FmMain()
         {
             InitializeComponent();
 
             var services = new ServiceCollection();
             services.AddWindowsFormsBlazorWebView();
-            services.AddWinFormsTitleBar();
+            services.AddWinFormsTitleBarKit();
             services.AddBlazorWebViewDeveloperTools();
             var sp = services.BuildServiceProvider();
             blazorWebView1.HostPage = "wwwroot\\index.html";
             blazorWebView1.Services = sp;
             blazorWebView1.RootComponents.Add<Test>("#app");
 
-            _windowControl = sp.GetRequiredService<TitleBarService>();
+            _titleBarService = sp.GetRequiredService<TitleBarService>();
         }
 
         private void FmMain_Load(object sender, EventArgs e)
@@ -31,22 +31,22 @@ namespace JiuLing.TitleBarKit.WinForms.Test
 
         private void BtnMinimize_Click(object sender, EventArgs e)
         {
-            _windowControl.TitleBar.Minimize();
+            _titleBarService.Controller.Minimize();
         }
 
         private void BtnToggleMaximize_Click(object sender, EventArgs e)
         {
-            _windowControl.TitleBar.ToggleMaximize();
+            _titleBarService.Controller.ToggleMaximize();
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            _windowControl.TitleBar.Close();
+            _titleBarService.Controller.Close();
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
-            _windowControl.Draggable.DragMove();
+            _titleBarService.DragHandler.DragMove();
         }
     }
 }

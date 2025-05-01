@@ -17,7 +17,7 @@ namespace JiuLing.TitleBarKit.Wpf.Test
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly TitleBarService _windowControl;
+        private readonly TitleBarService _titleBarService;
         public MainWindow()
         {
             InitializeComponent();
@@ -25,36 +25,35 @@ namespace JiuLing.TitleBarKit.Wpf.Test
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddWpfBlazorWebView();
             serviceCollection.AddBlazorWebViewDeveloperTools();
-            serviceCollection.AddWpfTitleBar();
+            serviceCollection.AddWpfTitleBarKit();
             serviceCollection.AddSingleton<MainWindow>();
             var sp = serviceCollection.BuildServiceProvider();
             Resources.Add("services", sp);
 
-            _windowControl = sp.GetRequiredService<TitleBarService>();
+            _titleBarService = sp.GetRequiredService<TitleBarService>();
         }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                _windowControl.Draggable.DragMove();
+                _titleBarService.DragHandler.DragMove();
             }
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e)
         {
-            _windowControl.TitleBar.Minimize();
+            _titleBarService.Controller.Minimize();
         }
 
         private void Maximize_Click(object sender, RoutedEventArgs e)
         {
-            _windowControl.TitleBar.ToggleMaximize();
+            _titleBarService.Controller.ToggleMaximize();
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            _windowControl.TitleBar.Close();
+            _titleBarService.Controller.Close();
         }
-
     }
 }

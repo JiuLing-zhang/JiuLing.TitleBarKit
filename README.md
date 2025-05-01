@@ -49,18 +49,18 @@ dotnet add package JiuLing.TitleBarKit
 ### 注册服务
 ```c#
 // WinForms
-serviceCollection.AddWinFormsTitleBar();
+serviceCollection.AddWinFormsTitleBarKit();
 // WPF
-serviceCollection.AddWpfTitleBar();
+serviceCollection.AddWpfTitleBarKit();
 ```
 
 ### 注入服务
-* `Blazor` 程序
+* `Blazor`
 ```razor
 @inject TitleBarService TitleBarService
 ```
 
-* 原生 `Windows` 程序
+* `Windows`
 ```c#
 public MyComponent(TitleBarService titleBarService)
 {
@@ -68,29 +68,32 @@ public MyComponent(TitleBarService titleBarService)
 }
 ```
 
-### 调用功能
-```c#
-TitleBarService.Draggable.DragMove();
+## 💡 示例 | Example
 
-TitleBarService.TitleBar.Minimize();
-TitleBarService.TitleBar.Maximize();
-TitleBarService.TitleBar.Restore();
-TitleBarService.TitleBar.ToggleMaximize();
-TitleBarService.TitleBar.Close();
-```
+* `Blazor`
 
-## 💡 示例 | Example (Blazor)
 ```razor
 <div class="custom-title-bar">
-    <div class="title-content" @onmousedown="() => TitleBarService.Draggable.DragMove()">
-        <span class="title-text">WPF Blazor Web 组件</span>
+    <div class="title-content" @onmousedown="()=>TitleBarService.DragHandler.DragMove()">
+        <span class="title-text">Blazor 标题栏组件</span>
     </div>
     <div class="title-buttons">
-        <button @onclick="() => TitleBarService.TitleBar.Minimize()" class="btn">_</button>
-        <button @onclick="() => TitleBarService.TitleBar.ToggleMaximize()" class="btn">🗖</button>
-        <button @onclick="() => TitleBarService.TitleBar.Close()" class="btn">X</button>
+        <button @onclick="()=>TitleBarService.Controller.Minimize()" class="btn">_</button>
+        <button @onclick="()=>TitleBarService.Controller.ToggleMaximize()" class="btn">🗖</button>
+        <button @onclick="()=>TitleBarService.Controller.Close()" class="btn">X</button>
     </div>
 </div>
+```
+
+* `Windows`
+```c#
+TitleBarService.DragHandler.DragMove();
+
+TitleBarService.Controller.Minimize();
+TitleBarService.Controller.Maximize();
+TitleBarService.Controller.Restore();
+TitleBarService.Controller.ToggleMaximize();
+TitleBarService.Controller.Close();
 ```
 
 ## 💻 支持平台 | Supported Platforms

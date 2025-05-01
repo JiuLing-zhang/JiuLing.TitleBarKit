@@ -20,7 +20,7 @@ namespace JiuLing.TitleBarKit.Wpf.Test
         {
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddWpfBlazorWebView();
-            serviceCollection.AddWpfTitleBar();
+            serviceCollection.AddWpfTitleBarKit();
             serviceCollection.AddSingleton<MainWindow>();
             var sp = serviceCollection.BuildServiceProvider();
             Resources.Add("services", sp);

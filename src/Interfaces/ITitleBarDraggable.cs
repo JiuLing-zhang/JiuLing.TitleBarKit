@@ -3,6 +3,7 @@
 /// <summary>
 /// 窗口拖动接口
 /// </summary>
+[Obsolete("ITitleBarDraggable 已弃用，请使用 ITitleBarDragHandler。", error: true)]
 public interface ITitleBarDraggable
 {
     /// <summary>

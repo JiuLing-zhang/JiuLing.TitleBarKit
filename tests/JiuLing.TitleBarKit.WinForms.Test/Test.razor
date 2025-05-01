@@ -1,18 +1,18 @@
 ﻿@inject TitleBarService TitleBarService
 
 <div class="custom-title-bar">
-    <div class="title-content" @onmousedown="OnMouseDown">
-        <span class="title-text">WinForms Blazor Web 组件</span>
+    <div class="title-content" @onmousedown="()=>TitleBarService.DragHandler.DragMove()">
+        <span class="title-text">Blazor 标题栏组件</span>
     </div>
     <div class="title-buttons">
-        <button @onclick="Minimize" class="btn">_</button>
-        <button @onclick="ToggleMaximize" class="btn">🗖</button>
-        <button @onclick="Close" class="btn">X</button>
+        <button @onclick="()=>TitleBarService.Controller.Minimize()" class="btn">_</button>
+        <button @onclick="()=>TitleBarService.Controller.ToggleMaximize()" class="btn">🗖</button>
+        <button @onclick="()=>TitleBarService.Controller.Close()" class="btn">X</button>
     </div>
 </div>
 
 <div>
-    我是 WinForms Blazor 开发的页面
+    我是 Blazor 页面
 </div>
 
 <style>
@@ -33,25 +33,3 @@
         display: flex;
     }
 </style>
-
-@code {
-    private void Minimize()
-    {
-        TitleBarService.TitleBar.Minimize();
-    }
-
-    private void ToggleMaximize()
-    {
-        TitleBarService.TitleBar.ToggleMaximize();
-    }
-
-    private void Close()
-    {
-        TitleBarService.TitleBar.Close();
-    }
-
-    private void OnMouseDown(MouseEventArgs e)
-    {
-        TitleBarService.Draggable.DragMove();
-    }
-}
