@@ -23,10 +23,10 @@ jobs:
             9.0.x
 
       - name: Restore dependencies
-        run: dotnet restore .\JiuLing.CommonLibs.sln
+        run: dotnet restore .\JiuLing.TitleBarKit.sln
 
       - name: Build
-        run: dotnet build .\JiuLing.CommonLibs.sln --no-restore -c release
+        run: dotnet build .\JiuLing.TitleBarKit.sln --no-restore -c release
 
       - name: Get version
         uses: olegtarasov/get-tag@v2.1
